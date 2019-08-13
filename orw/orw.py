@@ -24,10 +24,10 @@ int 0x80
 mov eax, 3
 mov ebx, eax
 mov ecx, esp
-mov edx, 30
+mov edx, 50
 int 0x80
 
-mov edx, 20
+mov edx, 50
 mov ecx, esp
 mov ebx, 1
 mov eax, 4
