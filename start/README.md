@@ -1,4 +1,4 @@
-# start
+# start(2更)
 第一題 就看了很久QQ
 
 原本看checksec 沒有NX
@@ -50,6 +50,21 @@ writeup：
 因為已經走過一次了 所以 esp 會是紀錄到 stack的最高(?)位置
 
 然後靠 mov ecx, esp 搞出 esp 的位置
+
+```=
+注意 這裡所leak 的esp 就是一開始的 push esp
+
+  0x08048060      54             push esp               
+
+還有因為多虧
+
+  0x08048099      83c414         add esp, 0x14
+  
+esp 指到上個push 上的esp
+所以才會剛剛好leak 出 一開始所push 上的esp
+
+
+```
 
 恩對 噴出來之後 就再次輸入
 
